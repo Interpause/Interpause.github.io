@@ -70,6 +70,8 @@ function genBg(kwargs){
 	container.setAttribute('xmlns','http://www.w3.org/2000/svg');
 	container.setAttribute('viewBox',`0 0 ${width} ${height}`);
 	container.setAttribute('shape-rendering','geometricPrecision');
+	container.setAttribute('width','100%');
+	container.setAttribute('height','100%');
 	
 	let bg = document.createElementNS("http://www.w3.org/2000/svg", 'g');
 	container.appendChild(bg);
@@ -166,4 +168,4 @@ function genBg(kwargs){
 	}
 	return container;
 };
-document.body.addChild(genBg());
+document.body.appendChild(genBg());
