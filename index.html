@@ -1,15 +1,56 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-	<head>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<title>Hello World</title>
-	</head>
-	<body>
-		<h1>Hello there!</h1>
-		<script src="triangle_background.js"></script>
-	</body>
 
+<head>
+    <title>Awareness Puzzle :)</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/image-puzzle.css" rel="stylesheet" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<script src="js/DragDropTouch.js"></script>
+    <script src="js/image-puzzle.js"></script>
+</head>
+
+<body>
+    <div id="collage">
+        <h2>Solve the Puzzle to reveal a Message!</h2>
+        <hr />
+        <div id="playPanel">
+            <h3 id="imgTitle"></h3>
+            <div>
+                <ul id="sortable" class="sortable"></ul>
+				<div class="winDiv">
+					<h2>You Suan!</h2>
+					<p class="winMsg"></p>
+				</div>
+                <div>
+                    <button id="btnRule" type="button" class="btn" onclick="rules();">Help</button>
+                    <button id="newPhoto" type="button" class="btn" onclick="restart();">Another Photo</button>
+                    <button id="btnReplay" type="button" class="btn" onclick="about();">About</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var images = [
+                { src: 'images/peng_kueh.jpg', title: 'Peng Kueh', msg: 'Handmade miniature Singapore traditional kueh magnets made by the special needs trainees of Tinkle Arts. Each piece is made with love.'},
+                { src: 'images/tinkleart_workshop.jpg', title: 'Workshop', msg: 'Tinkle Arts collaborated with MINDS in late 2017, employing persons with special needs to co-facilitate workshops, events and create beautiful miniature clay art pieces for them.'},
+            ];
+
+            window.onload = function () {
+				document.querySelector('.winDiv').style.display = "none";
+                imagePuzzle.startGame(images, 4);
+            };
+            function restart() {
+				document.querySelector('.winDiv').style.display = "none";
+                imagePuzzle.startGame(images, 4);
+            }
+            function rules() {
+                alert('Drag & drop to swap pieces till the image is reformed!');
+            }
+            function about() {
+                alert('Image Puzzle code by github/softgandhi.\nDrag & drop polyfill by github/bernardo-castilho.\nPut together by github/Interpause.');
+            }
+        </script>
+    </div>
+</body>
 </html>
